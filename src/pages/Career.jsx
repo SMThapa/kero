@@ -1,4 +1,5 @@
 import { FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Career = () => {
   return (
@@ -34,7 +35,10 @@ export const Career = () => {
             <div className="belowBannerText">
                 <img src="/career/belowBannerText.png" alt="belowBannerText" />
                 <p>Send us your resume at</p>
-                <a href="mailto:info@kerovit.com" className="mail" target="_blank">info@kerovit.com</a>
+                {/* <a href="mailto:info@kerovit.com" className="mail" target="_blank">info@kerovit.com</a> */}
+                <Link to={'https://www.kajariaceramics.com/future-openings.php'} target="_blank">
+                    <div className="btn-primary">New Openings</div>
+                </Link>
             </div>
         </div>
 
