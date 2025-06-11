@@ -345,7 +345,7 @@
                                 justify-content: center;
                                 align-items: center;
                                 gap: 12px;
-                                color: #27435E;
+                                color: #003253;
                             }
                         }
                     }
@@ -361,7 +361,9 @@
                         }
 
                         .store-info{
+                            color: #003253;
                             .store-name{
+                                color: #003253;
                                 font-size: 1.8rem;
                                 margin-bottom: .5rem;
                             }
@@ -370,6 +372,7 @@
                                 margin-bottom: .5rem;
                             }
                             .store-details{
+                                color: #003253;
                                 font-size: .9rem;
                                 font-weight: 900;
                                 margin-bottom: 1rem;
@@ -397,7 +400,7 @@
                 .direction-btn {
                     width: 200px;
                     justify-content: center;
-                    background-color: #0057d8;
+                    background-color: #003253;
                     color: #fff;
                     border: none;
                     padding: 5px 0;
@@ -414,7 +417,7 @@
                     }
                 }
                 .name{
-                    color: #0047ab;
+                    color: #003253;
                     font-size: clamp(1rem, 5vw, 1.8rem);
                 }
                 .person{
