@@ -124,7 +124,7 @@ export const About = () => {
         </div>
 
         <div className="directorMessage">
-          <img src="/aboutus/director.png" alt="" />
+          <img src="about_img.jpg" alt="" />
           <div className="belowImageContent">
             <p className={readMoreTwo ? "": "two_close"}>At Kerovit, we strive to revolutionize India’s bath and sanitaryware industry by offering luxury, style, and quality that go beyond expectations.</p>
 

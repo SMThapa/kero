@@ -156,7 +156,8 @@ export const Home = () => {
           </div>
           <p>Indulge in the luxury of Aurum, our exquisite collection that seamlessly blends elegance with nature's palette of perfection.</p>
           <div className="img-container">
-            <img src="/single_product.png" alt="Single Product image"  loading="lazy"/>
+            {/* <img src="/single_product.png" alt="Single Product image"  loading="lazy"/> */}
+            <img src="/home page-22.png" alt="A icon" loading="lazy"/>
 
             <button type="button" className="desktop-card-button">
               <Link to="/collection/aurum" className="showMoreBtn">Show More <BsArrowRight className="right_arrow"/></Link>

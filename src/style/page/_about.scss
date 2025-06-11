@@ -633,9 +633,10 @@
 
             .directorMessage{
                 img{
-                    height: clamp(500px, 100vh, 600px);
+                    // height: clamp(500px, 100vh, 600px);
+                    height: 100%;
                     object-fit: cover;
-                    object-position: 0 -10px;
+                    // object-position: 0 -10px;
                 }
                 p{
                     font-size: .8rem;
