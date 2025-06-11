@@ -21,17 +21,23 @@ export const ProductListing = () => {
         const fetchData = async () => {
             try {
                 const res1 = await axios.get(url, { headers: { 'Content-Type': 'application/json' } });                
+                const res2 = await axios.get(rangeUrl, { headers: { 'Content-Type': 'application/json' } })
                 const allProducts = res1.data.products;            
-                const filterCollection = allProducts.filter((obj)=> obj.collection == setSeries)                                    
-                
+                const filterCollection = allProducts.filter((obj)=> obj.collection == setSeries)                                                                
+
                 const filterProduct = filterCollection.filter((obj)=> obj.category == dictionary.Category[series][product])                                                                       
                 
                 const newRange = [...new Map(filterProduct.map(item => [item.range, item])).values()];                
+                
+                let range = newRange.map(item => item.range); // Extract range values
+                let rangeArr = res2.data.data; // Array of objects
 
-                if(newRange == 0){
+                // Ensure the types match (e.g., converting to string if necessary)
+                let trueArr = rangeArr.filter(obj => range.includes(String(obj.id)));                
+                if(trueArr == 0){
                     setNullProducts(filterProduct)
                 }else{                           
-                    setRange(newRange);
+                    setRange(trueArr);
                 }          
 
             }catch(err){

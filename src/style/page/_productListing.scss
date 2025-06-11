@@ -24,6 +24,25 @@ $active-color: yellow;
         background: #404041;
     }
   
+    .loader{
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+        height: 60px;
+      }
+    }
+    .hide{
+      display: none;
+    }
+    .show-ld{
+      display: flex;
+    }
+    .show-img{
+      display: block;
+    }
+
     .prod_details {
       padding: 20px 15px;
       border-radius: 10px;
@@ -137,7 +156,7 @@ $active-color: yellow;
             a{
             // height: 100%;
               width: 100%;
-              display: inline-block;
+              // display: inline-block;
               img {               
                 padding: 25px;                                      
                 height: 250px;
