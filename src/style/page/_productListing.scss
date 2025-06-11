@@ -98,7 +98,9 @@ $active-color: yellow;
       }
     
       .product_card {
+        background-color: rgba(#a1a5a0, .1);
         text-align: center;
+        border: 1px solid #a1a5a0;
         //   padding: 10px;
         
         img {
@@ -166,8 +168,8 @@ $active-color: yellow;
             }
             
             p {
-              font-size: 14px !important;
-              margin: 2rem 0;
+              font-size: 12px !important;
+              margin: 1.2rem 0;
             }
           }
         }

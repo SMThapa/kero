@@ -24,16 +24,10 @@ export const ProductSingle = () => {
     };
 
     const [loadSimulate, setLoadSimulate] = useState(true);
-    // useEffect(()=>{
-    //     setTimeout(() => {
-    //         setLoadSimulate(false)
-    //     }, 1500);
-    // }, [])
 
     const [singleProduct, setSingleProduct] = useState({})
 
-    const url = import.meta.env.VITE_API_URL;
-    // const api = `${url}/products/json`; 
+    const url = import.meta.env.VITE_API_URL;    
     useEffect(()=>{
         axios.get(url).then(res => {
             const allProducts = res.data.products;      
@@ -46,7 +40,7 @@ export const ProductSingle = () => {
             setSingleProduct(singleItem)
             setLoadSimulate(false)
             
-            setSelectedImage("https://demosite.kerovit.com/storage/AllImages/"+singleItem.thumbnail_picture_url.split('/storage/')[1]+".png")            
+            setSelectedImage(singleItem.thumbnail_picture_url)            
             
         }).catch(err => {
             console.log(err)
