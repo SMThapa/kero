@@ -1,0 +1,220 @@
+.latestPost {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff; /* Fallback */
+    background: linear-gradient(to bottom, rgb(197, 196, 196) 0%, rgb(255, 255, 255) 100%);
+    color: #fff;
+    position: relative; // Ensures the blur effect is properly positioned
+
+    .container {
+        margin-top: 50px;
+
+        .row {
+            margin: 0 20px;
+        }
+    }
+
+    .product-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-title {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .content {
+        margin: 0px 40px 0 40px;
+        color: #000;
+
+        .title {
+            text-decoration: underline;
+            text-underline-offset: 8px;
+            font-family: 'Sinkin Sans 500 Medium', sans-serif;
+            font-size: 15.232px;
+            padding-top: 80px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #a4a4a4;
+            font-family: 'Sinkin Sans 300 Light', sans-serif;
+            font-size: 9.854px;
+        }
+    }
+
+    .filterContainer {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        
+        .filterTop {
+            width: 80%;
+            margin: 0 auto;
+            border-top: 1px solid #867e7e;
+            border-bottom: 1px solid #867e7e;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 40px;
+            cursor: pointer;
+            position: relative;
+
+            .filterIcon {
+                font-size: 20px;
+                margin-left: 15px;
+                color: #000;
+            }
+
+            .selectedDate {
+                margin-left: 10px;
+                font-size: 12px;
+                color: #000;
+                font-family: 'Sinkin Sans 500 Medium', sans-serif;
+            }
+        }
+
+        .filterDropdown {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 20; // Ensure it appears on top
+
+            .filterSection {
+                padding: 10px 15px;
+                border-bottom: 1px solid #ddd;
+                
+                h4 {
+                    font-size: 13.232px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    cursor: pointer;
+                    color: #000;
+                    font-family: 'Sinkin Sans 500 Medium', sans-serif;
+                }
+
+                ul {
+                    columns: 3;
+                    list-style: none;
+                    padding: 0;
+                    margin: 5px 0 0;
+                    
+                    li {
+                        font-size: 9.854px;
+                        color: #a4a4a4;
+                        padding: 5px 0;
+                        cursor: pointer;
+                        transition: all 0.3s ease-in-out;
+                        font-family: 'Sinkin Sans 300 Light', sans-serif;
+
+                        &:hover {
+                            color: #000;
+                        }
+
+                        &.selected {
+                            font-weight: bold;
+                            color: #000;
+                        }
+                    }
+                }
+            }
+
+            .clearFilterBtn {
+                display: block;
+                width: 100%;
+                background: #ff4d4d;
+                color: white;
+                border: none;
+                padding: 8px;
+                font-size: 14px;
+                cursor: pointer;
+                margin-top: 10px;
+                text-align: center;
+                border-radius: 4px;
+            }
+            
+            .clearFilterBtn:hover {
+                background: #e04343;
+            }
+            
+        }
+    }
+
+
+    .filterContainer:has(.filterDropdown) ~ * {
+        filter: blur(5px);
+        pointer-events: none;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .latestPost{
+        .latestPost_contents{
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto ;
+            padding:0 25px;
+        }
+        .content{
+            margin-top: clamp(2rem, 5vw, 3rem) !important;
+            margin: 0;
+
+            p{
+                font-size: clamp(.9rem , 2vw, 1.1rem) !important;
+                line-height: 1.6;
+                color: #a4a4a4;                
+                margin-bottom: 35px;
+            }
+        }
+        .title{
+            font-size: clamp(1.2rem , 5vw, 1.6rem) !important;
+        }
+
+        .filterContainer{
+            .filterTop{
+                width: 100%;
+                span{
+                    margin-left: 25px;
+                    color: #333;
+                    font-weight: 500;
+                }
+            }
+            .filterDropdown{
+                display: grid;     
+                grid-template-columns: 1fr 1fr 1fr .5fr;
+                gap: 25px;
+                // align-items: center;
+                .clearFilterBtn{
+                    height: fit-content;
+                    margin: 0;
+                }
+            }
+        }
+        .container{
+            margin: 50px auto;
+
+            .row{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                & > div{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

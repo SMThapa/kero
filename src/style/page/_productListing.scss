@@ -1,0 +1,169 @@
+$black: #fff;
+$grey: #858282;
+$white: #fff;
+$primary-bg: #888686;
+$secondary-bg: #ffff;
+$tertiary-bg: #ffff;
+$active-color: yellow;
+
+.allProductMain {
+    // background-color: #404041;
+    padding-bottom: 40px; // Ensures spacing around content
+    padding-top: 80px;
+    
+    &.background-light{
+        background: linear-gradient(to bottom, $primary-bg 0px, $secondary-bg 150px, $tertiary-bg 100%);
+        // background: linear-gradient(to bottom, #888686 0px, #888686 25px, white 25px, white 100%);
+
+
+        .prod_details h2{
+            color: $grey !important;
+        }
+    }
+    &.background-dark{
+        background: #404041;
+    }
+  
+    .prod_details {
+      padding: 20px 15px;
+      border-radius: 10px;
+    
+      h2 {
+        font-family: 'Sinkin Sans 500 Medium', sans-serif;
+        font-size: 15.232px;
+      }
+      p{
+        font-family: 'Sinkin Sans 300 Light', sans-serif;
+        font-size: 9.825px;
+        color: #a4a4a4;
+      }
+    
+      h2{
+        color: #fff; // Changed to black for better readability
+      }
+    }
+  
+    .load-more {
+      background-color: f4f4f4;
+      border: 0.5px solid gray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      margin: auto;
+      font-family: 'Sinkin Sans 300 Light', sans-serif;
+      font-size: 10.129px;
+      width: 110px;
+      padding: 4px;
+      
+      &:hover {
+        background-color: #f4f4f4;
+        border-color: black;
+      }
+    }
+  
+    .product_grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); // 2 columns for mobile
+      gap: 16px;
+      padding: 20px;
+    
+      @media (min-width: 640px) {
+        grid-template-columns: repeat(3, 1fr); // 3 columns for tablets
+      }
+    
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr); // 4 columns for desktops
+      }
+    
+      .product_card {
+        text-align: center;
+        //   padding: 10px;
+        
+        img {
+          padding: 15px;                                      
+          height: 150px;
+          width: 100%;
+          width: 100%;
+          object-fit: contain;
+          // max-width: 180px;          
+        }
+    
+        p {
+          margin: 1rem 0;
+          font-size: 14px;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: #a4a4a4;
+          font-family: 'Sinkin Sans 300 Light', sans-serif;
+          font-size: 7.825px;
+        }
+      }
+    }
+  }
+  
+@media (min-width: 1024px) {
+    .allProductMain {      
+        padding: 100px 80px 60px;      
+
+
+        .prod_details {
+          max-width: 1600px;
+          width: 100%;
+          margin: 0 auto;
+        h2 {
+          margin-top: 45px;
+          font-size: 28px !important;
+        }
+
+        p {
+          font-size: 14px !important;
+          max-width: 900px;
+          line-height: 1.6;
+        }
+        }
+
+        .product_grid {
+          max-width: 1600px;
+          width: 100%;
+          margin: 0 auto;
+          grid-template-columns: repeat(4, 1fr) !important;
+          gap: 55px !important;
+          padding: 40px 0;
+
+          .product_card {
+            a{
+            // height: 100%;
+              width: 100%;
+              display: inline-block;
+              img {               
+                padding: 25px;                                      
+                height: 250px;
+                width: 100%;
+                object-fit: contain;
+              }
+            }
+            
+            p {
+              font-size: 14px !important;
+              margin: 2rem 0;
+            }
+          }
+        }
+
+        .load-more {
+        font-size: 13px !important;      
+        width: fit-content !important;      
+        padding: 6px 28px !important;
+        margin-top: 30px;      
+
+        &:hover {
+            background-color: #e0e0e0;
+            border-color: black;
+        }
+        }
+    }
+}
+    
