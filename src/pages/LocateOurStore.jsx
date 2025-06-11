@@ -54,13 +54,13 @@ export const LocateOurStore = () => {
         return allType.filter(obj => obj.state == state)        
     }
 
-    const handleFindCities = async (state) =>{
+    const handleFindCities = (state) =>{
         setSelectedState(state);
         const newData = filterState(state);
         const cityFilter = [...new Set(newData.map(obj => obj.city))];     
         setCity(cityFilter.sort())                  
 
-        setNewList([])        
+        setNewList(allType)        
     }
 
     const handleSubmitSearch = () =>{             
@@ -78,13 +78,15 @@ export const LocateOurStore = () => {
                 setSerarchError('*Not Found*')                
             }
         }
-
-        if(!selectedState){
-            setMessage(`Showing result for "${search}"`)
+        if(!search){
+            setMessage('')
+        }
+        else if(!selectedState){
+            setMessage(`Showing result for "${search}".`)
         }else if(selectedState && search){
-            setMessage(`Showing result for "${search}" in ${selectedState}, ${selectedCity}`)
+            setMessage(`Showing result for "${search}" in ${selectedState}, ${selectedCity}.`)
         }else{
-            setMessage(`${selectedState}, ${selectedCity}`)
+            setMessage(`Search of location: ${selectedState}, ${selectedCity}.`)
         }        
     }
 
@@ -92,11 +94,22 @@ export const LocateOurStore = () => {
         if(input.length == 0){
             setSearch(input)
             setSerarchError(" ")
-            setNewList([])
+            setNewList(allType)
         }else{
             setSearch(input)
         }
     }
+
+    useEffect(()=>{
+        const studio = newList.filter((obj)=> obj.dealertype == 'Studio');
+        const world = newList.filter((obj)=> obj.dealertype == "KerovitWorld")
+        const experience = newList.filter((obj)=> obj.dealertype == "Experience Center")
+
+        // setAllType(theData)
+        setStudioType(studio);
+        setWorldType(world);
+        setExperienceType(experience);  
+    }, [newList])
 
     return (
         <>            
@@ -216,7 +229,7 @@ export const LocateOurStore = () => {
                         </form>
                     </div>
 
-                    {
+                    {/* {
                         newList.length > 0  ? 
                         <div className="all-location-list">
                             <h3 className="heading">{message}</h3>
@@ -225,8 +238,7 @@ export const LocateOurStore = () => {
                                 newList.map((item, index)=>(
                                     <div key={index} className="card">
                                         <p className="name">{item.dealername}</p>
-                                        <p className="person">{item.contactperson}</p>
-                                        {/* <p>{item.dealertype}</p> */}
+                                        <p className="person">{item.contactperson}</p>                                        
                                         <p><MdLocationPin /> {item.address}</p>
                                         <p><FaPhoneAlt /> {item.contactnumber}</p>                                        
                                         {
@@ -268,7 +280,36 @@ export const LocateOurStore = () => {
                                 />
                             }
                         </div>                    
-                    }
+                    } */}
+                    <div className="location-list">      
+                        {message.length > 5 && <h3 className="heading">{message}</h3>    }              
+                        {
+                            worldType.length > 0 && 
+                            <StoreCard
+                                storeHeader="/locate-our-store/store1Header.png"
+                                storeImage="/locate-our-store/store1.png"
+                                location={worldType}                            
+                            />
+                        }
+
+                        {
+                            studioType.length > 0 && 
+                            <StoreCard
+                                storeHeader="/locate-our-store/store2Header.png"
+                                storeImage="/locate-our-store/store2.png"
+                                location={studioType}
+                            />
+                        }
+
+                        {
+                            experienceType.length > 0 &&
+                            <StoreCard
+                                storeHeader="/locate-our-store/store3Header.png"
+                                storeImage="/locate-our-store/store3.png"
+                                location={experienceType}
+                            />
+                        }
+                    </div>  
                 </div>
 
             </main>            

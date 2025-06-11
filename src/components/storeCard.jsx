@@ -1,7 +1,10 @@
 import { FaPhoneAlt } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import "swiper/css";
+import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
+
 import { MdLocationPin } from "react-icons/md";
 
 
@@ -12,9 +15,6 @@ const StoreCard = ({
     }) => {
     if (!location || location.length < 1) return null;
     
-    // If you need the computed string, you can do:
-    // const dealerTypeKey = location[0].dealertype.split(" ").join("_")
-
     return (
         <main className="all-store-card">
             <div className="store-card">
@@ -32,17 +32,19 @@ const StoreCard = ({
                     className="location_swiper"
                     spaceBetween={10}
                     loop={true}
-                    // autoplay={{
-                    //     delay: 2500,
-                    //     disableOnInteraction: false,
-                    // }}
-                    modules={[Autoplay]}                    
+                    pagination={{
+                        type: 'fraction',
+                    }}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[Pagination, Autoplay]}                    
                 >
                     {
                         location.map((item, index)=>(
                             <SwiperSlide key={index}>
                                 <div className="store-text-contents">
-                                    {/* <p className="desc">{description}</p> */}
                                     <div className="store-info">
                                         <h3 className="store-name">{item.dealername}</h3>
                                         <p className="owner-name">{item.contactperson}</p>
@@ -50,7 +52,6 @@ const StoreCard = ({
                                         <p className="store-phone">
                                             <FaPhoneAlt /> {item.contactnumber}
                                         </p>
-
                                         {
                                             item.google_link != "" ?
                                             <div className="actions">
