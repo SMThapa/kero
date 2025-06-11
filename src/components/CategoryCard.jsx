@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import aurumTabImg from "/public/aurum_collection.png";
-import klassicTabImg from "/public/klassic_collection.png";
+import klassicTabImg from "/public/klassic_logo3.png";
 
 export const CategoryCard = ({ aurumImages, klassicImages, categoryInfo }) => {
     const [activeTab, setActiveTab] = useState("aurum");
