@@ -10,8 +10,8 @@ import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 
 const manufPlant = [
-  { id: 1, img: "/aboutus/faucet_plant.png", name: "Kerovit Faucets", description: "Kerovit Faucets are developed at our state-of-the-art manufacturing unit in Gailpur, Rajasthan. Spread over 2 Lac sq. ft., and boasting the latest advanced machinery, the plant is poised to manufacture over 1.4 million pieces a year." },
-  { id: 2, img: "/aboutus/faucet_plant2.png", name: "Kerovit Sanitaryware", description: "Kerovit sanitaryware is manufactured at Morbi, Gujarat, with international standards of manufacturing processes including Mould Making, Shuttle Kiln, Tunnel Kiln, and Glazing Pressure Dye Casting. The entire process is ISI-approved and boasts an annual manufacturing capacity of over 1 million pieces. Our second plant, Kerovit Global Pvt. Ltd., Morbi, Gujarat, is the largest sanitaryware plant in India. Spread over 6 lacs sq. mt., KGPL adheres to international standards, features Cutting-edge R&D, houses advanced machinery and is operated by a team of skilled professionals to provide exceptional quality products." },
+  { id: 1, img: "/aboutus/about-03.png", name: "Kerovit Faucets", description: "Kerovit Faucets are developed at our state-of-the-art manufacturing unit in Gailpur, Rajasthan. Spread over 2 Lac sq. ft., and boasting the latest advanced machinery, the plant is poised to manufacture over 1.4 million pieces a year." },
+  { id: 2, img: "/aboutus/about-04.png", name: "Kerovit Sanitaryware", description: "Kerovit sanitaryware is manufactured at Morbi, Gujarat, with international standards of manufacturing processes including Mould Making, Shuttle Kiln, Tunnel Kiln, and Glazing Pressure Dye Casting. The entire process is ISI-approved and boasts an annual manufacturing capacity of over 1 million pieces. Our second plant, Kerovit Global Pvt. Ltd., Morbi, Gujarat, is the largest sanitaryware plant in India. Spread over 6 lacs sq. mt., KGPL adheres to international standards, features Cutting-edge R&D, houses advanced machinery and is operated by a team of skilled professionals to provide exceptional quality products." },
   // { id: 3, img: "/aboutus/faucet_plant.png", name: "Basin", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id laudantium quos beatae animi eos hic accusantium libero omnis sunt, ipsum maiores alias illum amet sequi vitae obcaecati architecto suscipit." },
   // { id: 4, img: "/aboutus/faucet_plant.png", name: "Toilet", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id laudantium quos beatae animi eos hic accusantium libero omnis sunt, ipsum maiores alias illum amet sequi vitae obcaecati architecto suscipit." },
   // { id: 5, img: "/aboutus/faucet_plant.png", name: "plant 5", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id laudantium quos beatae animi eos hic accusantium libero omnis sunt, ipsum maiores alias illum amet sequi vitae obcaecati architecto suscipit." },
@@ -58,7 +58,7 @@ export const About = () => {
     <main className="aboutus_main">      
       <div className="homebanner">
         <video className="aboutus_video" src="/videos/Plant video_12 mp4.mp4" autoPlay loop muted/>
-        <div className="bannerText">
+        {/* <div className="bannerText">
           <div className="banner-title-center">
             <h2>bathrooms</h2>
             <span className="h2_second">
@@ -71,7 +71,7 @@ export const About = () => {
               Kerovit's distinguished range of products encircle your soul into a sensational experience. made with utmost precision, we bring wellness into your home with great style and panache.
             </p>
           </div>
-        </div>
+        </div> */}
         <div className="whatsapp-icon">
           <FaWhatsapp  />
         </div>        
@@ -157,7 +157,7 @@ export const About = () => {
             navigation={{ nextEl: ".next-btn", prevEl: ".prev-btn" }}
             loop
             breakpoints={{
-              640: { slidesPerView: 3 },
+              640: { slidesPerView: 2 },
               1024: { slidesPerView: numberOfSlides },
             }}
             onSwiper={setSwiperInstance}
@@ -165,9 +165,9 @@ export const About = () => {
             {manufPlant.map((plant) => (
               <SwiperSlide key={plant.id}>
                 <div className="inside">
-                  <img src={plant.img} alt={plant.name} />
                   <h2>{plant.name}</h2>
-                  <p>{plant.description}</p>
+                  <img src={plant.img} alt={plant.name} />                  
+                  {/* <p>{plant.description}</p> */}
                 </div>
               </SwiperSlide>
             ))}

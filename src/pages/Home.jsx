@@ -74,7 +74,7 @@ export const Home = () => {
     <main className="home">
       <div className="homebanner">
         <video src="/videos/Home page Video.mp4" autoPlay loop muted></video>
-        <div className="bannerText">
+        {/* <div className="bannerText">
           <div className="center-heading">
             <h2>bathrooms</h2>           
             <h2> <span className="h2_second">you </span> desire</h2>  
@@ -84,7 +84,7 @@ export const Home = () => {
             <p>Let your desires come alive with the perfect fusion of form, function and usability with Kerovit. Featuring an eclectic blend of exquisite design, environment-friendly technology and unparalleled quality, Kerovit enhances your bathroom décor and experience.</p>
 
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="home_categories">
