@@ -7,8 +7,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
-
-import firstBannerImg from "../../public/home page-05.png"
+import firstBannerImg from "../../public/locate_out_store_home.jpg"
 
 import cat1 from "../../public/catalogue/catalogue_aurum-master.jpg"
 import cat2 from "../../public/catalogue/aurum_Sanitaryware_New_Collection.jpg"
@@ -186,7 +185,7 @@ export const Home = () => {
           <p>Indulge in the luxury of Aurum, our exquisite collection that seamlessly blends elegance with nature's palette of perfection.</p>
           <div className="img-container">
             {/* <img src="/single_product.png" alt="Single Product image"  loading="lazy"/> */}
-            <img src="/home page-22.png" alt="A icon" loading="lazy"/>
+            <img src="/Collection_Aurum.png" alt="A icon" loading="lazy"/>
 
             <button type="button" className="desktop-card-button">
               <Link to="/collection/aurum" className="showMoreBtn">Show More <BsArrowRight className="right_arrow"/></Link>
@@ -207,7 +206,7 @@ export const Home = () => {
           Bring home the true definition of timeless luxury with our Klassic collection, which maintains sophistication at its peak with elegant, minimal aesthetics.
           </p>
           <div className="img-container">
-            <img src="/klassic.png" alt="Single Product image"  loading="lazy"/>
+            <img src="/Collection_Klassic.png  " alt="Single Product image"  loading="lazy"/>
 
             <button type="button" className="desktop-card-button">
               <Link to="/collection/klassic" className="showMoreBtn">Show More <BsArrowRight className="right_arrow"/></Link>

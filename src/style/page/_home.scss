@@ -832,6 +832,9 @@ $text-color: #757575;
           opacity: 1;
           bottom: 40px;
         }
+        &:hover img{
+          filter: brightness(.5);
+        }
 
         @media (min-width: 1600px){
           max-width: clamp(350px, 30vw, 500px);
@@ -1050,7 +1053,7 @@ $text-color: #757575;
         p {
           font-size: 14px;
           line-height: 1.8;          
-          color: #a4a4a4;
+          color: white;
         }
   
         // .locate {

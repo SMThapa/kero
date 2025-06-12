@@ -67,7 +67,7 @@ export const About = () => {
   return (
     <main className="aboutus_main">      
       <div className="homebanner">
-        <video className="aboutus_video" src="/videos/Plant video_12 mp4.mp4" autoPlay loop muted/>
+        <video className="aboutus_video" src="/videos/aboutUs.mp4" autoPlay loop muted/>
         {/* <div className="bannerText">
           <div className="banner-title-center">
             <h2>bathrooms</h2>

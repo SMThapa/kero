@@ -666,6 +666,10 @@ $border-bottom-color: lighten($background-color-active-base, 15%);
               height: 24px;
               margin-right: 10px;
               margin-left: 15px;
+
+                filter: brightness(0) saturate(100%) invert(54%) sepia(1%) saturate(0%) hue-rotate(70deg) brightness(99%) contrast(85%);
+                height: 20px;
+                width: 20px;
               }
   
               a {
@@ -697,8 +701,8 @@ $border-bottom-color: lighten($background-color-active-base, 15%);
   }
   
   .moreIcon {
-  float: left !important;
-  height: 29px !important;
-  margin-right: 6px !important;
+    float: left !important;
+    // height: 29px !important;
+    margin-right: 6px !important;
   }
 }

@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 import { CiLocationOn } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
+import { MdCall } from "react-icons/md";
 
 
 const productSubMenu = [
@@ -111,7 +112,8 @@ export const Header = () => {
           
           <div className="nav-right">
             <NavLink to="/locate-our-store">              
-              <CiLocationOn className="menu_location" />
+              {/* <CiLocationOn  />      */}
+              <MdCall className="menu_location"/>         
               
             </NavLink>            
 
@@ -159,7 +161,8 @@ export const Header = () => {
                 {[
                   // { img: "/icons/whatsnew.png", label: "What's New", link: "#" },
                   { img: "/icons/career.png", label: "Career", link: "/career" },
-                  { img: "/icons/resources.png", label: "Blog", link: "/blog" }
+                  { img: "/icons/resources.png", label: "Blog", link: "/blog" },
+                  { img: "/icons/phone.png", label: "Customer Care", link: "/customer_care" },
                 ].map((item, index) => (
                   <li key={index} onClick={(e) => e.stopPropagation()}>
                     <img src={item.img} alt={item.name} className="moreIcon" loading="lazy"/>
