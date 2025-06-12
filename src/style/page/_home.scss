@@ -1,6 +1,5 @@
 $text-color: #757575;
-.home {
-  // color: #a1a1a1;
+.home {  
   margin-top: -67px;
 
   a{
@@ -24,6 +23,34 @@ $text-color: #757575;
     height: 75dvh;
     width: 100%;    
     position: relative;
+    .swiper{
+      height: 100%;
+    }
+    
+    .action-button{
+      position: absolute;
+      bottom: 30px;
+      transform: translateY(-50%);
+      z-index: 9;
+      height: 50px;
+      width: 50px;
+      background: rgba(225,225,225, .5);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &.home-prev{
+        right: 90px;
+      }
+      &.home-next{
+        right: 25px;
+      }
+      svg{
+        font-size: 18px;
+        color: rgb(87, 85, 85);
+      }      
+    }
 
     video{
       height: 100%;

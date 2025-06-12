@@ -64,6 +64,19 @@ export const Home = () => {
     }
   };
 
+
+  const swiperHomeRef = useRef(null);
+  const handlePrevHomeSlide = () =>{
+    if(swiperHomeRef.current){
+      swiperHomeRef.current.slidePrev()
+    }
+  }
+  const handleNextHomeSlide = () =>{
+    if(swiperHomeRef.current){
+      swiperHomeRef.current.slideNext()
+    }
+  }
+
   //swiper category
   const [activeIndex, setActiveIndex] = useState(0);
   const handleTextClick = (index) => {
@@ -76,7 +89,17 @@ export const Home = () => {
   return (
     <main className="home">
       <div className="homebanner">
-        <video src="/videos/Home page Video.mp4" autoPlay loop muted></video>
+        <Swiper
+          loop={true}
+          onSwiper={(swiper) => (swiperHomeRef.current = swiper)} // Assign Swiper instance
+        >
+          <SwiperSlide>
+            <video src="/videos/home_video_2.mp4" autoPlay loop muted></video>        
+          </SwiperSlide>
+          <SwiperSlide>
+            <video src="/videos/home_video_1.mp4" autoPlay loop muted></video>
+          </SwiperSlide>
+        </Swiper>
         {/* <div className="bannerText">
           <div className="center-heading">
             <h2>bathrooms</h2>           
@@ -88,6 +111,9 @@ export const Home = () => {
 
           </div>
         </div> */}
+
+        <div className="action-button home-prev" onClick={handlePrevHomeSlide}><FaChevronLeft/></div>
+        <div className="action-button home-next" onClick={handleNextHomeSlide}><FaChevronRight/></div>        
       </div>
 
       <div className="home_categories">
