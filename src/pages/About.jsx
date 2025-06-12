@@ -80,15 +80,18 @@ export const About = () => {
       <div className="about-page-contents">
         <div className="belowbanner">
           {/* <h2>who we are</h2> */}
-          <div className="belowBannerText">
-            <h2>who</h2>
-            <span className="h2_second">
-              <p>we</p> <h2>are</h2>
-            </span>
+          <div className="whoWeAre">
+            <div className="belowBannerText">
+              <h2>who</h2>
+              <span className="h2_second">
+                <p>we</p> <h2>are</h2>
+              </span>
+            </div>
+            <p className="p1" >
+              At Kerovit, we believe in redefining how people perceive and use their bathrooms by blending innovation, design, and technology to create spaces that promote hygiene, luxury and sustainability.
+            </p>
           </div>
-          <p className="p1" >
-            At Kerovit, we believe in redefining how people perceive and use their bathrooms by blending innovation, design, and technology to create spaces that promote hygiene, luxury and sustainability.
-          </p>
+
           <hr />
           <h4>Proudly Made in India</h4>
           <p className={`p2 ${readMoreOne ? '' : 'one_close'}`} >Kerovit is a brand Made in India. Our journey is powered by a dedicated workforce and a strong presence across the country:</p>

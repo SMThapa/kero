@@ -10,8 +10,10 @@ import { BsArrowRight } from "react-icons/bs";
 
 import firstBannerImg from "../../public/home page-05.png"
 
-import cat1 from "../../public/catelogue1.png"
-import cat2 from "../../public/catelogue2.png"
+import cat1 from "../../public/catalogue/catalogue_aurum-master.jpg"
+import cat2 from "../../public/catalogue/aurum_Sanitaryware_New_Collection.jpg"
+import cat3 from "../../public/catalogue/generalProductCatalogue.jpg"
+
 
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
@@ -42,11 +44,12 @@ export const Home = () => {
   }
 
   const blogPosts = [
-    { id: 1, img: "/blog3.png", title: "Traditional vs. Wall-Mounted Bathroom Faucets: A Comparative Guide", desc: "Lorem ipsum, dolor sit" },
-    { id: 2, img: "/blog3.png", title: "Choosing the Right Faucet Finish for Your Bathroom – A Guide to Chrome, Gold, and Matte Black", desc: "Lorem ipsum, dolor sit" },
-    { id: 3, img: "/blog3.png",title: "Traditional vs. Wall-Mounted Bathroom Faucets: A Comparative Guide", desc: "Lorem ipsum, dolor sit"  },
-    { id: 4, img: "/blog3.png", title: "Choosing the Right Faucet Finish for Your Bathroom – A Guide to Chrome, Gold, and Matte Black", desc: "Lorem ipsum, dolor sit" },
-    { id: 5, img: "/blog3.png", title: "Traditional vs. Wall-Mounted Bathroom Faucets: A Comparative Guide", desc: "Lorem ipsum, dolor sit"  },
+    { id: 1, img: "/blogs/blog3.png", title: "Traditional vs. Wall-Mounted Bathroom Faucets: A Comparative Guide", desc: "Bathroom faucets play a pivotal role in the overall design and functionality of your bathroom." },
+    { id: 2, img: "blogs/blogs2.jpeg", title: "Choosing the Right Faucet Finish for Your Bathroom – A Guide to Chrome, Gold, and Matte Black", desc: "Transforming your bathroom into a stylish and functional space starts with choosing the right faucet finish. Whether you want the timeless appeal of chrome" },
+    { id: 3, img: "blogs/blogs4.jpeg",title: "Luxurious Gold: How Gold Finish Faucets Can Transform Your Bathroom", desc: "The timeless charm of gold has symbolized wealth, power, and luxury throughout history. In interior design, gold evokes a sense of sophistication."  },
+    { id: 4, img: "blogs/blogs5.png", title: "Top 3 Kitchen Faucets Types That Deliver Excellence, Performance, Durability, and Style", desc: "A kitchen faucet is more than just a functional fixture; it is a central element that enhances the aesthetics and efficiency of your kitchen." },
+    { id: 5, img: "blogs/blogs6.jpg", title: "Drips, Leaks, and Sputters: Easy Fixes for Common Faucet Problems", desc: "Faucets are essential fixtures in any home, providing access to clean water for cooking, cleaning, and personal hygiene."},
+    { id: 6, img: "blogs/blogs7.jpeg", title: "Small Space and Big Style: Space-Saving Bathroom Storage Solutions – Vanities vs. Cabinets", desc: "FWhen it comes to bathroom storage, maximising space is essential, especially when it pertains to a smaller bathroom space."},
   ];
 
   const swiperRefBlog = useRef(null);
@@ -227,11 +230,16 @@ export const Home = () => {
         <div className="catalogue">
           <div className="the_catelogue">              
             <img src={cat1} alt=""  loading="lazy"/>
-            <a href="#">General product catalogue</a>
+            <a href="#">Aurum Master Catalogue</a>
           </div>
           <div className="the_catelogue">
             <img src={cat2} alt=""  loading="lazy"/>
-            <a href="#">General product catalogue</a>
+            <a href="#">Aurum Sanitaryware New Collection</a>
+          </div>
+
+          <div className="the_catelogue">
+            <img src={cat3} alt=""  loading="lazy"/>
+            <a href="#">General Product Catalogue</a>
           </div>
         </div>
       </div>
