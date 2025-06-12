@@ -26,17 +26,14 @@ export const ProductSingle = () => {
     const [loadSimulate, setLoadSimulate] = useState(true);
 
     const [singleProduct, setSingleProduct] = useState({})
+    const [mainProduct, setMainProduct] = useState({})
 
     const url = import.meta.env.VITE_API_URL;    
     useEffect(()=>{
         axios.get(url).then(res => {
             const allProducts = res.data.products;      
-            // const setSeries = series === "klassic" ? "2" : "1";
-            // const filterCollection = allProducts.filter((obj)=> obj.collection == setSeries)            
-            // const filterProduct = filterCollection.filter((obj)=> obj.category == dictionary.Category[product])      
-            // console.log(filterProduct)
-
             const singleItem = allProducts.find((obj)=> obj.product_code == id);
+            setMainProduct(singleItem)
             setSingleProduct(singleItem)
             setLoadSimulate(false)
             
@@ -46,6 +43,13 @@ export const ProductSingle = () => {
             console.log(err)
         })
     }, [ ])
+
+    function handleVariant(code){
+        const variant = mainProduct.variants.find(obj => obj.product_code == code)
+        setSelectedImage(variant.thumbnail_picture_url)
+        setSingleProduct(variant)
+        // console.log(variant)
+    }
 
   return (
     <>
@@ -60,25 +64,28 @@ export const ProductSingle = () => {
 
                 <div className="product-details">
                     <div className="description">
-                    <h2>{variation ? variation.split("_").join(" ").toUpperCase() : product.split("_").join(" ").toUpperCase()}</h2>
-                    <p className="model">MODEL NO.: {id.split('_').join(' - ')}</p>
+                    <h2>{singleProduct.product_title.toUpperCase()}</h2>
+                    <p className="model">MODEL NO.: {singleProduct.product_code}</p>
                     <p className="series">SERIES: {series.toUpperCase()}</p>
 
                     <h3>Product Description</h3>
                     <p className="description_p">{singleProduct.product_description}</p>
 
-                    {/* <h3>Variants</h3>
+                    <h3>Variants</h3>
                     <div className="variants">
-                        {variants.map((variant, index) => (
+                        {mainProduct.variants.map((variant, index) => (
                         <img
                             key={index}
-                            src={variant.image}
-                            alt={variant.alt}
-                            className={`variant-image ${selectedImage === variant.image ? "active" : ""}`}
-                            onClick={() => setSelectedImage(variant.image)}
+                            src={variant.thumbnail_picture_url}
+                            alt={variant.product_code}
+                            loading="lazy"
+                            className={`variant-image ${selectedImage === variant.thumbnail_picture_url ? "active" : ""}`}
+                            onClick={() => handleVariant(variant.product_code)}
                         />
                         ))}
-                    </div> */}
+
+                        
+                    </div>
 
                     <button className="nearest-showroom-btn">NEAREST SHOWROOM</button>
                     </div>

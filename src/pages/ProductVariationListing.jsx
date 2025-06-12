@@ -83,7 +83,22 @@ export const ProductVariationListing = () => {
           </div>
           <div className="product_grid">
             {variationProduct && variationProduct.map((item, index) => (
-              <div className="product_card" key={index}>                                  
+              <div className="product_card" key={index}>     
+                <div className="image-group">
+                  {
+                    item.variants && 
+                    <>
+                      <span style={{background:"#141213"}}/>
+                      <span style={{background:"#E6E6E6"}}/>
+                      <span style={{background:"#C9A180"}}/>
+                      <span style={{background:"#EBD9B5"}}/>
+                      <span style={{background:"#6A6563"}}/>
+                    </>
+                    // item.variants.map((ve, index)=>(
+                    //   <img src={ve.thumbnail_picture_url} alt={ve.product_code + index}/>
+                    // ))
+                  }
+                </div>                                             
                 <Link to={`/collection/${series}/${product}/${variation}/${item.product_code}`} className={loadedImg.includes(index+item.id) ? 'show-img':'hide'}>
                   <img 
                     src={item.thumbnail_picture_url} 
@@ -95,7 +110,8 @@ export const ProductVariationListing = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><radialGradient id="a9" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stopColor="#0B62DA"></stop><stop offset=".3" stopColor="#0B62DA" stopOpacity=".9"></stop><stop offset=".6" stopColor="#0B62DA" stopOpacity=".6"></stop><stop offset=".8" stopColor="#0B62DA" stopOpacity=".3"></stop><stop offset="1" stopColor="#0B62DA" stopOpacity="0"></stop></radialGradient><circle transformOrigin="center" fill="none" stroke="url(#a9)" strokeWidth="15" strokeLinecap="round" strokeDasharray="200 1000" strokeDashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transformOrigin="center" fill="none" opacity=".2" stroke="#0B62DA" strokeWidth="15" strokeLinecap="round" cx="100" cy="100" r="70"></circle></svg>
                 </div> 
                 <p>{variation.split("_").join(" ").toUpperCase()}</p>
-                <p>Model No: {item.product_code}</p>               
+                <p>Model No: {item.product_code}</p>    
+                <p className="product_description">{item.product_description}</p>          
               </div>
                 
             ))}
