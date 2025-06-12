@@ -111,7 +111,7 @@ export const Header = () => {
           </div>
           
           <div className="nav-right">
-            <NavLink to="/locate-our-store">              
+            <NavLink to="/customer-care">              
               {/* <CiLocationOn  />      */}
               <MdCall className="menu_location"/>         
               
@@ -148,7 +148,7 @@ export const Header = () => {
             </li>
 
             <li><NavLink to="/catelogue"><img src= "/icons/catalogue.png" alt="catalogue" className="hideInDesktop" loading="lazy" />E-Catalogue</NavLink></li>
-            <li><NavLink to="/locate-our-store"><img src= "/icons/wheretobuy.png" alt="wheretobuy" className="hideInDesktop" loading="lazy" />Where to Buy</NavLink></li>
+            <li><NavLink to="/customer-care"><img src= "/icons/wheretobuy.png" alt="wheretobuy" className="hideInDesktop" loading="lazy" />Where to Buy</NavLink></li>
 
             <li className={`submenu ${activeIndex === 1 ? "active openSub" : ""}`} onClick={(e) => toggleSubmenu(1, e)}>
               <NavLink to="#">

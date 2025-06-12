@@ -64,7 +64,7 @@ export const ProductSingle = () => {
 
                 <div className="product-details">
                     <div className="description">
-                    <h2>{singleProduct.product_title.toUpperCase()}</h2>
+                    <h2>{product.toUpperCase()}</h2>
                     <p className="model">MODEL NO.: {singleProduct.product_code}</p>
                     <p className="series">SERIES: {series.toUpperCase()}</p>
 
