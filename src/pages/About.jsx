@@ -10,14 +10,10 @@ import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 
 const manufPlant = [
-  { id: 1, img: "/aboutus/about-03.png", name: "Kerovit Faucets", description: "Kerovit Faucets are developed at our state-of-the-art manufacturing unit in Gailpur, Rajasthan. Spread over 2 Lac sq. ft., and boasting the latest advanced machinery, the plant is poised to manufacture over 1.4 million pieces a year." },
-  { id: 2, img: "/aboutus/about-04.png", name: "Kerovit Sanitaryware", description: "Kerovit sanitaryware is manufactured at Morbi, Gujarat, with international standards of manufacturing processes including Mould Making, Shuttle Kiln, Tunnel Kiln, and Glazing Pressure Dye Casting. The entire process is ISI-approved and boasts an annual manufacturing capacity of over 1 million pieces. Our second plant, Kerovit Global Pvt. Ltd., Morbi, Gujarat, is the largest sanitaryware plant in India. Spread over 6 lacs sq. mt., KGPL adheres to international standards, features Cutting-edge R&D, houses advanced machinery and is operated by a team of skilled professionals to provide exceptional quality products." },
-  // { id: 3, img: "/aboutus/faucet_plant.png", name: "Basin", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id laudantium quos beatae animi eos hic accusantium libero omnis sunt, ipsum maiores alias illum amet sequi vitae obcaecati architecto suscipit." },
-  // { id: 4, img: "/aboutus/faucet_plant.png", name: "Toilet", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id laudantium quos beatae animi eos hic accusantium libero omnis sunt, ipsum maiores alias illum amet sequi vitae obcaecati architecto suscipit." },
-  // { id: 5, img: "/aboutus/faucet_plant.png", name: "plant 5", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id laudantium quos beatae animi eos hic accusantium libero omnis sunt, ipsum maiores alias illum amet sequi vitae obcaecati architecto suscipit." },
-  // { id: 6, img: "/aboutus/faucet_plant.png", name: "plant 6", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat id laudantium quos beatae animi eos hic accusantium libero omnis sunt, ipsum maiores alias illum amet sequi vitae obcaecati architecto suscipit." },
+  { id: 1, img: "/aboutus/about-04.png", name: "Faucet", sub_Descrioption:'Kerovit Faucets are developed at our state-of-the-art manufacturing unit in Gailpur, Rajasthan.', description: "Kerovit Faucets are developed at our state-of-the-art manufacturing unit in Gailpur, Rajasthan. Spread over 2 Lac sq. ft., and boasting the latest advanced machinery, the plant is poised to manufacture over 1.4 million pieces a year." },
+  { id: 2, img: "/aboutus/about-03.png", name: "Sanitaryware", sub_Descrioption:'Kerovit sanitaryware is manufactured at Morbi, Gujarat,', description: "Kerovit sanitaryware is manufactured at Morbi, Gujarat, with international standards of manufacturing processes including Mould Making, Shuttle Kiln, Tunnel Kiln, and Glazing Pressure Dye Casting. The entire process is ISI-approved and boasts an annual manufacturing capacity of over 1 million pieces. Our second plant, Kerovit Global Pvt. Ltd., Morbi, Gujarat, is the largest sanitaryware plant in India. Spread over 6 lacs sq. mt., KGPL adheres to international standards, features Cutting-edge R&D, houses advanced machinery and is operated by a team of skilled professionals to provide exceptional quality products." },
+  { id: 3, img: "/aboutus/kgpl.png", name: "Sanitaryware", sub_Descrioption:'Kerovit sanitaryware is manufactured at Morbi, Gujarat,', description: "Kerovit sanitaryware is manufactured at Morbi, Gujarat, with international standards of manufacturing processes including Mould Making, Shuttle Kiln, Tunnel Kiln, and Glazing Pressure Dye Casting. The entire process is ISI-approved and boasts an annual manufacturing capacity of over 1 million pieces. Our second plant, Kerovit Global Pvt. Ltd., Morbi, Gujarat, is the largest sanitaryware plant in India. Spread over 6 lacs sq. mt., KGPL adheres to international standards, features Cutting-edge R&D, houses advanced machinery and is operated by a team of skilled professionals to provide exceptional quality products." },
 ];
-const numberOfSlides = manufPlant.length > 4 ? 4 : manufPlant.length;
 
 const certificates = [
   { id: 1, img: "aboutus/certificate1.png" },
@@ -36,9 +32,23 @@ export const About = () => {
 
   const [readMoreOne, setReadMoreOne] = useState(false);
   const [readMoreTwo, setReadMoreTwo] = useState(false);
+
+  const [readMore, setReadMore] = useState('')
+  const handleReadMore = (id) =>{
+    if(id == readMore){
+      setReadMore('')
+    }else{
+      setReadMore(id)
+    }
+  }
   const handleNextSlide = () => {
     if (swiperInstance) {
       swiperInstance.slideNext();
+    }
+  };
+  const handlePrevSlide = () => {
+    if (swiperInstance) {
+      swiperInstance.slidePrev();
     }
   };
 
@@ -155,13 +165,13 @@ export const About = () => {
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={10}
-            slidesPerView={1}
+            slidesPerView={2}
             pagination={{ clickable: true }}
             navigation={{ nextEl: ".next-btn", prevEl: ".prev-btn" }}
             loop
             breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: numberOfSlides },
+              640: { slidesPerView: 1 },
+              1024: { slidesPerView: 2 },
             }}
             onSwiper={setSwiperInstance}
           >
@@ -170,17 +180,26 @@ export const About = () => {
                 <div className="inside">
                   <h2>{plant.name}</h2>
                   <img src={plant.img} alt={plant.name} />                  
-                  {/* <p>{plant.description}</p> */}
-                </div>
+                  {
+                    plant.id == readMore ?
+                    <p>{plant.description}</p>:
+                    <p>{plant.sub_Descrioption}</p>
+                    
+                  }
+                  <div className="primary-btn" onClick={()=>handleReadMore(plant.id)}>{plant.id == readMore ? 'read less' : 'read more'}</div>
+                </div>                
               </SwiperSlide>
             ))}
           </Swiper>
 
+          <div className="swipeButton" onClick={handleNextSlide}>
+            <FaChevronRight />          
+          </div>
+          <div className="swipeButton" onClick={handlePrevSlide}>
+            <FaChevronLeft />
+          </div>
 
-          {/* <button className="prev-btn"><MdKeyboardArrowLeft /></button>
-          <button className="next-btn"><MdKeyboardArrowRight /></button> */}
-
-
+          
           {/* <button type="button" className="swipeButton" onClick={handleNextSlide}><FaChevronRight className="right_arrow disableOnMobile" /><span className="disableOnDesktop">Swipe < BsArrowRight  className="right_arrow" /></span></button> */}
         </div>
 
