@@ -162,7 +162,7 @@ export const Header = () => {
                   // { img: "/icons/whatsnew.png", label: "What's New", link: "#" },
                   { img: "/icons/career.png", label: "Career", link: "/career" },
                   { img: "/icons/resources.png", label: "Blog", link: "/blog" },
-                  { img: "/icons/phone.png", label: "Customer Care", link: "/customer_care" },
+                  { img: "/icons/phone.png", label: "Customer Care", link: "/customer-care" },
                 ].map((item, index) => (
                   <li key={index} onClick={(e) => e.stopPropagation()}>
                     <img src={item.img} alt={item.name} className="moreIcon" loading="lazy"/>

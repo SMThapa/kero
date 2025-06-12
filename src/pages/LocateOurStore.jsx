@@ -217,7 +217,6 @@ export const LocateOurStore = () => {
                                     <option value="lakshadweep">Lakshadweep</option>
                                     <option value="puducherry">Puducherry</option>
                                 </select>
-
                             </div>
 
                             <div className="form-group">
