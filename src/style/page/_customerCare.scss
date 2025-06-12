@@ -2,7 +2,7 @@
     overflow: hidden;
     .banner{
         height: 70vh;
-        width: 100%;
+        width: 100%;        
         img{
             height: 100%;
             width: 100%;
@@ -10,13 +10,16 @@
         }
     }
     .below-banner{
-        padding: 7rem 0;
+        padding: 5rem 15px;        
         max-width: 900px;
         width: 100%;
         margin: 0 auto;
 
         .customer-description{
             margin: 0 0 4rem;
+            font-size: 1.4rem;
+            opacity: 0.7;
+            font-weight: 300;
         }
 
         .company-info{
