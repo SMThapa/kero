@@ -3,7 +3,7 @@ import plusIcon from "../../public/icons/plus.png";
 import minusIcon from "../../public/icons/minus.png";
 import 'react-inner-image-zoom/lib/styles.min.css';
 import InnerImageZoom from 'react-inner-image-zoom';
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import axios from "axios";
 
 const variants = [
@@ -18,6 +18,7 @@ export const ProductSingle = () => {
     const {series, product, variation, id} = useParams();
     const [selectedImage, setSelectedImage] = useState(variants[0].image);
     const [openSection, setOpenSection] = useState(null);
+    const {pathname} = useLocation()
   
     const toggleSection = (sectionIndex) => {
       setOpenSection(openSection === sectionIndex ? null : sectionIndex);
@@ -42,15 +43,13 @@ export const ProductSingle = () => {
         }).catch(err => {
             console.log(err)
         })
-    }, [ ])
-
+    }, [pathname])
     function handleVariant(code){
         const variant = mainProduct.variants.find(obj => obj.product_code == code)
         setSelectedImage(variant.thumbnail_picture_url)
-        setSingleProduct(variant)
-        // console.log(variant)
-    }
-
+        setSingleProduct(variant)        
+    }    
+    
   return (
     <>
         {
@@ -71,21 +70,25 @@ export const ProductSingle = () => {
                     <h3>Product Description</h3>
                     <p className="description_p">{singleProduct.product_description}</p>
 
-                    <h3>Variants</h3>
-                    <div className="variants">
-                        {mainProduct.variants.map((variant, index) => (
-                        <img
-                            key={index}
-                            src={variant.thumbnail_picture_url}
-                            alt={variant.product_code}
-                            loading="lazy"
-                            className={`variant-image ${selectedImage === variant.thumbnail_picture_url ? "active" : ""}`}
-                            onClick={() => handleVariant(variant.product_code)}
-                        />
-                        ))}
-
-                        
-                    </div>
+                    {
+                        mainProduct.variants && 
+                        <>
+                            <h3>Variants</h3>
+                            <div className="variants">
+                                { mainProduct.variants.map((variant, index) => (
+                                    <img
+                                        key={index}
+                                        src={variant.thumbnail_picture_url}
+                                        alt={variant.product_code}
+                                        loading="lazy"
+                                        className={`variant-image ${selectedImage === variant.thumbnail_picture_url ? "active" : ""}`}
+                                        onClick={() => handleVariant(variant.product_code)}
+                                    />
+                                ))}                        
+                            </div>
+                        </>
+                    }
+                    
 
                     <button className="nearest-showroom-btn">NEAREST SHOWROOM</button>
                     </div>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef, Suspense, useDeferredValue } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import subMenuIcon from "../../public/icons/down.png"; // Import your submenu icon
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,7 +7,28 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { CiLocationOn } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
 import { MdCall } from "react-icons/md";
+import axios from "axios";
+import dictionary from "../../data/api-dictionary";
 
+
+const collectionType = {
+  1:"aurum",
+  2:"klassic"
+}
+const categoryType = {
+  1: "faucet",
+  2: "shower",
+  3: "toilet",
+  4: "basin",
+  5: "accessories",
+  6: "bathroom_furniture",
+  7: "faucet",
+  8: "shower",
+  9: "toilet",
+  10: "basin",
+  11: "accessories",
+  12: "bathroom_furniture"
+}
 
 const productSubMenu = [
   { img: "/icons/faucet.png", name: "Faucet", link: "/product/faucet" },
@@ -22,11 +43,10 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const [openMenuList, setOpenMenuList] = useState(false);
-
-  const {pathname} = useLocation();
+  const [openMenuList, setOpenMenuList] = useState(false);  
   
-
+  const {pathname} = useLocation();
+  const searchURL = import.meta.env.VITE_API_SEARCH;  
   // Toggle menu open/close
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -57,29 +77,63 @@ export const Header = () => {
   //handleling search input
   const [openSearch, setOpenSearch] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const handleSearchInputChange = (e) => {
-    setSearchInput(e.target.value);
-    console.log(e.target.value);
-  };
-  const handleOpenSearch = () => {
-    console.log("cleicked")
+  const defferedValue = useDeferredValue(searchInput);
+  const [searchArr, setSearchArr] = useState([]);
+  const [searchMessage, setSearchMessage] = useState(null)
+  useEffect(()=>{
+    setSearchMessage('searching...')
+    let isMounted = true;
+    async function handleSearch(text){
+      try{
+        const res = await axios.get(`${searchURL}?query=${text.trim()}`)        
+        if(isMounted){          
+          setSearchArr(res.data.products)
+          setSearchMessage(res.data.products.length >= 1 ? null : "No products found.")
+        }        
+      }catch(err){
+        console.log(err)
+      }
+    }
+    if(defferedValue.length > 1){
+      handleSearch(defferedValue)
+    }else{
+      setSearchArr([])
+    }
+
+    return () =>{
+      isMounted = false;
+    }
+  }, [defferedValue])  
+
+  const handleOpenSearch = () => {    
     setOpenSearch(!openSearch);
-    setSearchInput("");
+    setSearchInput(" ");
+    searchInputRef.current.value = null
+    setActiveIndex(null)
   }
   const handleCloseSearch = () => {
     setOpenSearch(false);
-    setSearchInput("");
+    setSearchInput(" ");
+    searchInputRef.current.value = null
   }
+
+  useEffect(()=>{
+    if(activeIndex == null){
+      setOpenMenuList(true)
+    }else{      
+      setOpenSearch(false)
+    }
+  }, [activeIndex])
 
   useEffect(()=>{
     setIsOpen(false)
     setOpenMenuList(false)
 
     setActiveIndex(null)
+    handleCloseSearch()
     // const [activeIndex, setActiveIndex] = useState(null);
     // const [scrolled, setScrolled] = useState(false);    
-  }, [pathname])
-
+  }, [pathname])  
 
   return (
     <div className="onlyNav">
@@ -122,9 +176,24 @@ export const Header = () => {
 
           <div className={`search-desktop ${openSearch ? "open" : ""}`}>
             <div className="search-desktop-container">
-              <input type="text" ref={searchInputRef} placeholder="Search" onChange={(e)=> handleSearchInputChange(e)} className="search-desktop-input" />
-              {/* <img src="menu_search.png" alt="" className="menu_search" /> */}
-              <IoClose className="close_icon" onClick={handleCloseSearch}/>              
+              <input type="text" ref={searchInputRef} placeholder="Search..." onChange={( )=> setSearchInput(searchInputRef.current.value)} className="search-desktop-input" />              
+              <IoClose className="close_icon" onClick={handleCloseSearch}/>                      
+            </div>
+            <div className="search-contents">
+              <p className="search-message">{searchInputRef.current.value && searchMessage}</p>                
+              <div className="search-list">                            
+                {
+                  searchArr.slice(0, 10).map((item, index)=>(
+                  <Link to={`/collection/${collectionType[item.collection]}/${categoryType[item.category]}/${dictionary.Range[item.range]}/${item.product_code}`}>
+                    <div className="list-card" key={index}>
+                      <img src={item.thumbnail_picture_url} alt="" />
+                      <p>{item.product_title}</p>
+                      <p>{item.product_code}</p>
+                    </div>
+                  </Link>
+                  ))
+                }
+              </div>
             </div>
           </div>
           
@@ -148,7 +217,7 @@ export const Header = () => {
             </li>
 
             <li><NavLink to="/catelogue"><img src= "/icons/catalogue.png" alt="catalogue" className="hideInDesktop" loading="lazy" />E-Catalogue</NavLink></li>
-            <li><NavLink to="/customer-care"><img src= "/icons/wheretobuy.png" alt="wheretobuy" className="hideInDesktop" loading="lazy" />Where to Buy</NavLink></li>
+            <li><NavLink to="/locate-our-store"><img src= "/icons/wheretobuy.png" alt="wheretobuy" className="hideInDesktop" loading="lazy" />Where to Buy</NavLink></li>
 
             <li className={`submenu ${activeIndex === 1 ? "active openSub" : ""}`} onClick={(e) => toggleSubmenu(1, e)}>
               <NavLink to="#">
