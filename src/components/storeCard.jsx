@@ -31,14 +31,14 @@ const StoreCard = ({
                 <Swiper 
                     className="location_swiper"
                     spaceBetween={10}
-                    loop={true}
+                    loop={location.length > 1}
                     pagination={{
                         type: 'fraction',
                     }}
-                    // autoplay={{
-                    //     delay: 2500,
-                    //     disableOnInteraction: false,
-                    // }}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
                     modules={[Pagination, Autoplay]}                    
                 >
                     {

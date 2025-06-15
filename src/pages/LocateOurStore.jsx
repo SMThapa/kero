@@ -142,7 +142,7 @@ export const LocateOurStore = () => {
                             }
                         </select>
 
-                        <select className="dropdown" onChange={(e)=> setSelectedCity(e.target.value)} value={selectedCity}>
+                        <select className="dropdown" onChange={(e)=> setSelectedCity(e.target.value)} value={selectedCity} required>
                             <option>-- Select City --</option>
                             {
                                 city.map((item, index)=>(
