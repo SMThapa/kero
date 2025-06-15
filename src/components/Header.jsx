@@ -186,7 +186,7 @@ export const Header = () => {
                 <div className="search-list">                            
                   {
                     searchArr.slice(0, 10).map((item, index)=>(
-                    <Link to={`/collection/${collectionType[item.collection]}/${categoryType[item.category]}/${dictionary.Range[item.range]}/${item.product_code}`} key={index}>
+                    <Link to={`/collection/${collectionType[item.collection]}/${categoryType[item.category]}/${item.range ? dictionary.Range[item.range] : "single"}/${item.product_code}`} key={index}>
                       <div className="list-card">
                         <img src={item.thumbnail_picture_url} alt="" />
                         <p>{item.product_title}</p>

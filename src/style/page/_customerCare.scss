@@ -8,6 +8,10 @@
             width: 100%;
             object-fit: cover;
         }
+
+        @media (width < 800px){
+            height: 45vh;
+        }
     }
     .below-banner{
         padding: 5rem 15px;        
@@ -156,6 +160,45 @@
 
                 &:hover {
                     background-color: #0044aa;
+                }
+            }
+        }
+
+        @media (width < 800px){
+            padding: 20px 15px;
+
+            .customer-description{
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            .company-info{
+                flex-direction: column;                
+                .section{
+                    width: 100%;
+                    margin-bottom: 2rem;
+                    padding: 15px 20px;
+                    .section-title{
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+            .app-section{
+                padding: 15px;
+                grid-template-columns: 1fr;
+                margin-bottom: 2rem;
+                .section-title{
+                    font-size: 1.6rem;
+                }
+            }
+            .form-header{
+                grid-template-columns: 1fr;
+                margin-top: 3rem;
+                .form-title{
+                    font-size: 1.6rem;
+                    text-align: left;
+                }
+                .form-description{
+                    font-size: 1rem;
                 }
             }
         }
