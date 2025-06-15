@@ -80,6 +80,19 @@ export const Header = () => {
   const defferedValue = useDeferredValue(searchInput);
   const [searchArr, setSearchArr] = useState([]);
   const [searchMessage, setSearchMessage] = useState(null)
+
+  const [width, setWidth] = useState(window.innerWidth);
+  let itemsToShow = width > 800 ? 10 : 5;
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);  
+
   useEffect(()=>{
     setSearchMessage('searching...')
     let isMounted = true;
@@ -111,6 +124,7 @@ export const Header = () => {
     setSearchInput(" ");
     searchInputRef.current.value = null
     setActiveIndex(null)
+    setIsOpen(false)
   }
   const handleCloseSearch = () => {
     setOpenSearch(false);
@@ -127,9 +141,14 @@ export const Header = () => {
   }, [activeIndex])
 
   useEffect(()=>{
+    if(isOpen){
+      setOpenSearch(false)
+    }
+  },[isOpen])
+
+  useEffect(()=>{
     setIsOpen(false)
     setOpenMenuList(false)
-
     setActiveIndex(null)
     handleCloseSearch()
   }, [pathname])  
@@ -184,13 +203,17 @@ export const Header = () => {
               <div className="search-contents">
                 <p className="search-message">{searchInputRef?.current?.value && searchMessage}</p>                
                 <div className="search-list">                            
-                  {
-                    searchArr.slice(0, 10).map((item, index)=>(
+                  {                    
+                    searchArr.slice(0, itemsToShow).map((item, index)=>(
                     <Link to={`/collection/${collectionType[item.collection]}/${categoryType[item.category]}/${item.range ? dictionary.Range[item.range] : "single"}/${item.product_code}`} key={index}>
                       <div className="list-card">
-                        <img src={item.thumbnail_picture_url} alt="" />
-                        <p>{item.product_title}</p>
-                        <p>{item.product_code}</p>
+                        <div className="list-img">
+                          <img src={item.thumbnail_picture_url} alt="" />
+                        </div>
+                        <div>
+                          <p className="list-card-head">{item.product_title}</p>
+                          <p>{item.product_code}</p>
+                        </div>
                       </div>
                     </Link>
                     ))

@@ -35,8 +35,8 @@ $active-color: yellow;
         img{
           height: 100%;
           width: 100%;
-          object-fit: contain;
-          padding: 12px;
+          object-fit: contain;          
+          padding: 3px;   
         }
       }
     }
@@ -175,8 +175,8 @@ $active-color: yellow;
           img{
             height: 100%;
             width: 100%;
-            object-fit: contain;
-            padding: 12px;
+            object-fit: contain;         
+            padding: 6px;   
           }
         }
       }
@@ -184,7 +184,7 @@ $active-color: yellow;
         background: transparent;
       }    
       .iiz__zoom-img{
-        padding: 55px;
+        padding: 50px;
       }
     }
 
