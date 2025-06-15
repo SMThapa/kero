@@ -8,7 +8,7 @@
 
         .storeHeader {
             width: 300px;
-            margin-bottom: 50px;
+            margin: 0 auto 50px;
         }
 
         .store-image {
@@ -78,6 +78,7 @@
                     align-items: center;
                     gap: 6px;
                     cursor: pointer;
+                    margin-bottom: 25px;
 
                     .arrow-top-right {
                         width: 15px;

@@ -169,10 +169,10 @@ export const About = () => {
             pagination={{ clickable: true }}
             navigation={{ nextEl: ".next-btn", prevEl: ".prev-btn" }}
             loop
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              1024: { slidesPerView: 2 },
-            }}
+            // breakpoints={{
+            //   640: { slidesPerView: 2 },
+            //   1024: { slidesPerView: 2 },
+            // }}
             onSwiper={setSwiperInstance}
           >
             {manufPlant.map((plant) => (

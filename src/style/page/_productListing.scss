@@ -32,6 +32,10 @@ $active-color: yellow;
       svg{
         height: 60px;
       }
+
+      @media (width < 800px){
+        min-height: 150px;
+      }
     }
     .hide{
       display: none;
@@ -114,6 +118,7 @@ $active-color: yellow;
             height: 20px;
             width: 20px;
             border-radius: 50%;
+            cursor: pointer;
           }
         }
 

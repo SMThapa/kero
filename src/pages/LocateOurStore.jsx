@@ -131,7 +131,7 @@ export const LocateOurStore = () => {
                             </button>                                                                                                
                         </div>                                                
 
-                        <hr className="divider" />
+                        {/* <hr className="divider" /> */}
 
                         <select className="dropdown" onChange={(e)=> handleFindCities(e.target.value)} value={selectedState}>
                             <option value={""}>-- Select State --</option>
@@ -156,6 +156,37 @@ export const LocateOurStore = () => {
                 </div>
 
                 <div className="store-main-contents">
+
+                    <div className="location-list">      
+                        {message.length > 5 && <h3 className="heading">{message}</h3>    }              
+                        {
+                            worldType.length > 0 && 
+                            <StoreCard
+                                storeHeader="/locate-our-store/store1Header.png"
+                                storeImage="/locate-our-store/store1.png"
+                                location={worldType}                            
+                            />
+                        }
+
+                        {
+                            studioType.length > 0 && 
+                            <StoreCard
+                                storeHeader="/locate-our-store/store2Header.png"
+                                storeImage="/locate-our-store/store2.png"
+                                location={studioType}
+                            />
+                        }
+
+                        {
+                            experienceType.length > 0 &&
+                            <StoreCard
+                                storeHeader="/locate-our-store/store3Header.png"
+                                storeImage="/locate-our-store/store3.png"
+                                location={experienceType}
+                            />
+                        }
+                    </div>  
+
                     <div className="store-form-container">
                         <h2>Send Us Your Query</h2>
                         <form className="store-form">
@@ -280,35 +311,6 @@ export const LocateOurStore = () => {
                             }
                         </div>                    
                     } */}
-                    <div className="location-list">      
-                        {message.length > 5 && <h3 className="heading">{message}</h3>    }              
-                        {
-                            worldType.length > 0 && 
-                            <StoreCard
-                                storeHeader="/locate-our-store/store1Header.png"
-                                storeImage="/locate-our-store/store1.png"
-                                location={worldType}                            
-                            />
-                        }
-
-                        {
-                            studioType.length > 0 && 
-                            <StoreCard
-                                storeHeader="/locate-our-store/store2Header.png"
-                                storeImage="/locate-our-store/store2.png"
-                                location={studioType}
-                            />
-                        }
-
-                        {
-                            experienceType.length > 0 &&
-                            <StoreCard
-                                storeHeader="/locate-our-store/store3Header.png"
-                                storeImage="/locate-our-store/store3.png"
-                                location={experienceType}
-                            />
-                        }
-                    </div>  
                 </div>
 
             </main>            
