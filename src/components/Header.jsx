@@ -88,6 +88,7 @@ export const Header = () => {
         const res = await axios.get(`${searchURL}?query=${text.trim()}`)        
         if(isMounted){          
           setSearchArr(res.data.products)
+          console.log(res.data.products)
           setSearchMessage(res.data.products.length >= 1 ? null : "No products found.")
         }        
       }catch(err){
@@ -119,7 +120,7 @@ export const Header = () => {
 
   useEffect(()=>{
     if(activeIndex == null){
-      setOpenMenuList(true)
+      setOpenMenuList(false)
     }else{      
       setOpenSearch(false)
     }
@@ -131,9 +132,8 @@ export const Header = () => {
 
     setActiveIndex(null)
     handleCloseSearch()
-    // const [activeIndex, setActiveIndex] = useState(null);
-    // const [scrolled, setScrolled] = useState(false);    
   }, [pathname])  
+  
 
   return (
     <div className="onlyNav">
@@ -179,22 +179,26 @@ export const Header = () => {
               <input type="text" ref={searchInputRef} placeholder="Search..." onChange={( )=> setSearchInput(searchInputRef.current.value)} className="search-desktop-input" />              
               <IoClose className="close_icon" onClick={handleCloseSearch}/>                      
             </div>
-            <div className="search-contents">
-              <p className="search-message">{searchInputRef.current.value && searchMessage}</p>                
-              <div className="search-list">                            
-                {
-                  searchArr.slice(0, 10).map((item, index)=>(
-                  <Link to={`/collection/${collectionType[item.collection]}/${categoryType[item.category]}/${dictionary.Range[item.range]}/${item.product_code}`}>
-                    <div className="list-card" key={index}>
-                      <img src={item.thumbnail_picture_url} alt="" />
-                      <p>{item.product_title}</p>
-                      <p>{item.product_code}</p>
-                    </div>
-                  </Link>
-                  ))
-                }
-              </div>
-            </div>
+            {
+              searchInputRef?.current?.value &&
+              <div className="search-contents">
+                <p className="search-message">{searchInputRef?.current?.value && searchMessage}</p>                
+                <div className="search-list">                            
+                  {
+                    searchArr.slice(0, 10).map((item, index)=>(
+                    <Link to={`/collection/${collectionType[item.collection]}/${categoryType[item.category]}/${dictionary.Range[item.range]}/${item.product_code}`} key={index}>
+                      <div className="list-card">
+                        <img src={item.thumbnail_picture_url} alt="" />
+                        <p>{item.product_title}</p>
+                        <p>{item.product_code}</p>
+                      </div>
+                    </Link>
+                    ))
+                  }
+                </div>
+              </div>              
+            }
+
           </div>
           
           <ul className={isOpen ? "open" : ""}>

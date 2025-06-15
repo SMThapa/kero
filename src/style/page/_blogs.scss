@@ -1,6 +1,4 @@
 .blogPage {
-
-
     .banner{
       background-image: url("/blogs/blog.png");
       background-size: cover;
@@ -127,7 +125,7 @@
     @media (min-width: 750px){
       .banner{
         position: relative;
-        height:clamp(250px, 100vh, 450px);      
+        height:clamp(250px, 100vh, 550px);      
         .black-filter{
           position: absolute;
           top: 0;

@@ -1,7 +1,7 @@
 .customerCare{
     overflow: hidden;
     .banner{
-        height: 70vh;
+        height:clamp(250px, 100vh, 550px);    
         width: 100%;        
         img{
             height: 100%;

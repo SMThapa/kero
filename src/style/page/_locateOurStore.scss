@@ -277,7 +277,7 @@
     
     @media (min-width:1024px){
         .banner{
-            height: 450px !important;
+            height:clamp(250px, 100vh, 550px);    
             background-size: cover;
 
             .bannerText{

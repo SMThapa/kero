@@ -57,14 +57,14 @@ export const Blogs = () => {
   return (
     <main className="blogPage">
         <div className="banner">
-        <div className="black-filter"></div>
-        <div className="banner_content">
-            <div className="text">
+            <div className="black-filter"></div>
+            <div className="banner_content">
+                <div className="text">
 
-            <h2 className="banner_title">Blog</h2>
-            <p>Designed with skillfull unification of creativity and engineering. Kerovit has combined un-matched functional expertise with a promise of excellence giving the customers an alluring experience they desire!</p>
+                <h2 className="banner_title">Blog</h2>
+                <p>Designed with skillfull unification of creativity and engineering. Kerovit has combined un-matched functional expertise with a promise of excellence giving the customers an alluring experience they desire!</p>
+                </div>
             </div>
-        </div>
         </div>
 
         <div className="latest_post">

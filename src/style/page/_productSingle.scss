@@ -18,22 +18,34 @@ $active-color: yellow;
   min-height: 100vh;
 
   .main-image {        
+    max-width: 500px;
+    width: 100%;
+    max-height: 400px;
+    height: 100%;
     display: block;
-    margin: 70px 0 20px;
-    // background: white;
-    padding: 12px;
+    margin: 70px 0 20px;        
     background-color: rgba(#a1a5a0, 0.1);
-    img{
-      // max-width: 550px;
-      // width: 100%;
-      // max-height: 550px;      
-      // height: 100%;
-      aspect-ratio: 1/1;
-      object-fit: contain;
+    overflow: hidden;
+    
+    figure{
+      height: 350px;
+      width: 100%;
+      & > div{
+        height: 100%;        
+        img{
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+          padding: 12px;
+        }
+      }
     }
-    .iiz__hint{
-      background: transparent;
-    }
+    // .iiz__hint{
+    //   background: transparent;
+    // }    
+    // .iiz__zoom-img{
+    //   padding: 55px;
+    // }
   }
 
   .description {
@@ -65,11 +77,12 @@ $active-color: yellow;
       justify-content: left;
       gap: 8px;
       margin-top: 10px;
+      margin-bottom: 20px;
 
       .variant-image {
         width: 50px;
         height: 50px;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 5px;
         cursor: pointer;
         border: 2px solid transparent;
@@ -151,10 +164,28 @@ $active-color: yellow;
       position: sticky;
       top: 120px;
       margin: 0;
-
       max-width: 500px;
       width: 100%;
-      height: fit-content;
+      max-height: 500px;
+      figure{
+        height: 100%;
+        width: 100%;
+        & > div{
+          height: 100%;        
+          img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            padding: 12px;
+          }
+        }
+      }
+      .iiz__hint{
+        background: transparent;
+      }    
+      .iiz__zoom-img{
+        padding: 55px;
+      }
     }
 
     .product-details{
